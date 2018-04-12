@@ -1,6 +1,9 @@
+import { GeoPoint } from '@firebase/firestore-types';
+
 export class Hotel {
-    nombre:string;
-    costoHabitacion:number;
-    latitude:number;
-    longitud:number;
+    id: string;
+    nombre: string;
+    costoHabitacion: number;
+    latitud: number;
+    longitud: number;
 }

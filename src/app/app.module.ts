@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { HotelComponent } from './components/hotel/hotel.component';
 
+import {HotelService} from './services/hotel.service';
+
 
 @NgModule({
   declarations: [
@@ -21,9 +23,9 @@ import { HotelComponent } from './components/hotel/hotel.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFireAuthModule,
-    AngularFirestoreModule    
+    AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [HotelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
