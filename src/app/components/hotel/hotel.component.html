@@ -1,8 +1,52 @@
 <div class="container">
+    <div class="container">
+        <form (ngSubmit)="addHotel()">
+          <div class="row">
+            <div class="col-md-4">
+              <p>Nombre:</p>
+            </div>
+            <div class="col-md-8">
+              <input type="text" name="nombre" [(ngModel)]="hotel.nombre">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <p>Costo habitación:</p>
+            </div>
+            <div class="col-md-8">
+              <input type="number" name="costoHabitacion" [(ngModel)]="hotel.costoHabitacion">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <p>Latitud:</p>
+            </div>
+            <div class="col-md-8">
+              <input type="number" name="latitud" [(ngModel)]="hotel.latitud">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <p>Longitud:</p>
+            </div>
+            <div class="col-md-8">
+              <input type="number" name="longitud" [(ngModel)]='hotel.longitud'>
+            </div>
+          </div>
+          <input class="btn" type="submit" name="submit" value="Agregar">
+        </form>
+      </div>
+
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let hotel of hotels">
+    <li class="list-group-item" *ngFor="let hotel of hotels"  (click)="delHotel(event,hotel)">
       <h1>Hola</h1>
       {{hotel.nombre}}
+      <br> {{hotel.id}}
+      <br> {{hotel.costoHabitacion}}
+      <br> {{hotel.latitud}}
+      <br> {{hotel.longitud}}
     </li>
   </ul>
+  <button type="button" class="btn btn-default">mostrar</button>
+
 </div>

@@ -13,14 +13,15 @@ export class HotelService {
 
   constructor(public db: AngularFirestore) {
     this.hotelCollection = db.collection('hotels');
+    console.log('entra');
     this.hotels = this.hotelCollection.snapshotChanges().map(
       hotels => {
-        return hotels.map(task => ({
-          id: task.payload.doc.id,
-        nombre: task.payload.doc.get('nombre'),
-        costoHabitacion: task.payload.doc.get('costoHabitacion'),
-        latitud: task.payload.doc.get('latitud'),
-        longitud: task.payload.doc.get('longitud')
+        return hotels.map(hotel => ({
+          id: hotel.payload.doc.id,
+        nombre: hotel.payload.doc.get('nombre'),
+        costoHabitacion: hotel.payload.doc.get('costoHabitacion'),
+        latitud: hotel.payload.doc.get('latitud'),
+        longitud: hotel.payload.doc.get('longitud')
         })
       );
       }
@@ -32,11 +33,18 @@ export class HotelService {
   }
 
   addHotel(hotel: Hotel) {
+    console.log('entra add');
+    console.log(hotel.nombre);
+    console.log(hotel.costoHabitacion);
+    console.log(hotel.longitud);
+    console.log(hotel.latitud);
     this.hotelCollection.add(hotel);
   }
 
   delHotel(hotel: Hotel) {
-    const url = 'tasks/' + hotel.id;
+    const url = 'hotels/' + hotel.id;
+    console.log(hotel.nombre);
+    console.log(url);
     this.hotelDocument = this.db.doc(url);
     this.hotelDocument.delete();
   }
