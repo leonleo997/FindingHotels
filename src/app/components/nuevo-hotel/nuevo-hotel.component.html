@@ -1,0 +1,97 @@
+<div class="parallax" id="banner">
+  <div class="container-fluid" id="primero">
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="content">
+          <h1>¿Quieres ser parte de la familia JourneyBooking.com?</h1>
+          <h3>Continua abajo.</h3>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<div class="container" id="formulario">
+  <h2>Deja que nootros te ayudemos a crecer en tu negocio de hoteleria.</h2>
+  <h3>Añade tus hoteles con nosotros y emprezarás a ser parte de la familia JourneyBooking.com</h3>
+
+  <br/>
+  <br/>
+  <form (ngSubmit)="addHotel()">
+    <div class="row">
+      <div class="col-md-4">
+        <p>Nombre:</p>
+      </div>
+      <div class="col-md-8">
+        <input type="text" name="nombre" placeholder="Nombre del hotel" [(ngModel)]="hotel.nombre">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>Costo habitación:</p>
+      </div>
+      <div class="col-md-8">
+        <input type="number" name="costoHabitacion" placeholder="Costo por habitación" [(ngModel)]="hotel.costoHabitacion">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>Latitud:</p>
+      </div>
+      <div class="col-md-8">
+        <input type="number" placeholder="Latitud" name="latitud" [(ngModel)]="hotel.latitud">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <p>Longitud:</p>
+      </div>
+      <div class="col-md-8">
+        <input type="number" placeholder="Longitud" name="longitud" [(ngModel)]='hotel.longitud'>
+      </div>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" name="action" value="Agregar">
+      <i class="material-icons right">send</i>
+    </button>
+    <button class="btn waves-effect red darken-4" type="submit" name="action" value="Agregar">
+      <i class="material-icons right">send</i>
+    </button>
+    </form>
+</div>
+
+<footer class="page-footer indigo darken-4">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Footer Content</h5>
+        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          <li>
+            <a class="grey-text text-lighten-3" href="#!">Link 1</a>
+          </li>
+          <li>
+            <a class="grey-text text-lighten-3" href="#!">Link 2</a>
+          </li>
+          <li>
+            <a class="grey-text text-lighten-3" href="#!">Link 3</a>
+          </li>
+          <li>
+            <a class="grey-text text-lighten-3" href="#!">Link 4</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2014 Copyright Text
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,38 @@
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#banner {
+	background-image: url(https://images.unsplash.com/photo-1440558953273-969c107f78a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5eaa0f30a1c37f38a4a365bd0c7d54ea&auto=format&fit=crop&w=1525&q=80);
+	min-height: 60%;
+}
+
+#content {
+	text-align: center;
+	margin-top: 9%;
+	color:white;
+	background-color: rgba(0,0,0,0);
+}
+
+#content h1 {
+    font-size: 3em;
+    font-family:'Raleway', sans-serif;
+}
+
+#content h3 {
+    font-family: 'Merriweather' serif;
+}
+
+#formulario h2 {
+    font-family:'Raleway', sans-serif;
+    text-align: center;
+
+}
+
+#formulario h3 {
+    font-family: 'Merriweather' serif;
+    text-align: center;
+}

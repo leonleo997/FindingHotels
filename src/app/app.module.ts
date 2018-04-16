@@ -6,18 +6,27 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { MaterializeModule } from 'angular2-materialize';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { HotelComponent } from './components/hotel/hotel.component';
 
 import {HotelService} from './services/hotel.service';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
+import { NuevoHotelComponent } from './components/nuevo-hotel/nuevo-hotel.component';
+import { RouterModule } from '@angular/router';
+import { RouterConfig } from './components/router.config';
+import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HotelComponent
+    HotelComponent,
+    BusquedaComponent,
+    NuevoHotelComponent,
+    SobreNosotrosComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +35,8 @@ import {HotelService} from './services/hotel.service';
     AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFirestoreModule,
+    MaterializeModule,
+    RouterModule.forRoot(RouterConfig)
   ],
   providers: [HotelService],
   bootstrap: [AppComponent]
