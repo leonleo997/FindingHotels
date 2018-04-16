@@ -38,9 +38,9 @@
 </div>
 
 <div class="container-fluid" *ngIf="nombre?.length; then Busqueda else noBusqueda">
-</div>>
+</div>
 <ng-template #Busqueda>
-  <div class="container" id="contentCards" *ngIf="busqueda?.length; else noExiste">
+  <div class="container" id="contentCards" *ngIf="true ; else noExiste">
     <h1>Resultado de la busqueda</h1>
     <div class="row">
       <div class="col-lg-4">
