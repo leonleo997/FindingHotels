@@ -1,6 +1,6 @@
 <div class="container">
     <div class="container">
-        <form (ngSubmit)="addHotel()">
+        <form (ngSubmit)="addHotel()" >
           <div class="row">
             <div class="col-md-4">
               <p>Nombre:</p>
@@ -47,6 +47,12 @@
       <br> {{hotel.longitud}}
     </li>
   </ul>
-  <button type="button" class="btn btn-default">mostrar</button>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"><label for="nombre">Nombre:</label></div>
+      <div class="col-md-8"><input type="text" name="nombre" [(ngModel)]="nombre"></div>
+    </div>
+    <button type="button" class="btn-dark" (click)="findHotel()">buscar</button>
+  </div>
 
 </div>
