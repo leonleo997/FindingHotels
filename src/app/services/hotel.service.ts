@@ -49,4 +49,12 @@ export class HotelService {
     this.hotelDocument.delete();
   }
 
+  findHotel(nombre: String) {
+    console.log('inicia find hotel ' + nombre);
+    const url = 'hotels/' + nombre;
+    console.log(url);
+    this.hotelDocument = this.db.doc(url);
+
+  }
+
 }

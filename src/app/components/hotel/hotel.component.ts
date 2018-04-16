@@ -10,6 +10,8 @@ import { HotelService } from "../../services/hotel.service";
 export class HotelComponent implements OnInit {
   hotels: Hotel[];
   hotel: Hotel;
+  nombre: String;
+  busqueda: Hotel[];
 
   constructor(public hotelService: HotelService) {
     console.log("HOLAAAA");
@@ -20,6 +22,7 @@ export class HotelComponent implements OnInit {
       latitud: 0,
       longitud: 0
     };
+    this.nombre = '';
     /*this.hotels = [
       {
         'id': '12e',
@@ -49,5 +52,10 @@ export class HotelComponent implements OnInit {
   delHotel(e, hotel: Hotel) {
     console.log('eliminar hotel');
     this.hotelService.delHotel(hotel);
+  }
+
+  findHotel() {
+    console.log(this.nombre);
+    //this.hotelService.findHotel(this.nombre);
   }
 }
