@@ -11,6 +11,7 @@ export class HotelComponent implements OnInit {
   hotels: Hotel[];
   hotel: Hotel;
   nombre: String;
+  busqueda: Hotel[];
 
   constructor(public hotelService: HotelService) {
     console.log("HOLAAAA");
@@ -55,6 +56,6 @@ export class HotelComponent implements OnInit {
 
   findHotel() {
     console.log(this.nombre);
-    this.hotelService.findHotel(this.nombre);
+    //this.hotelService.findHotel(this.nombre);
   }
 }
