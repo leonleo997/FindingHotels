@@ -10,6 +10,10 @@ export class HotelService {
   hotelCollection: AngularFirestoreCollection<Hotel>;
   hotelDocument: AngularFirestoreDocument<Hotel>;
   hotels: Observable<Hotel[]>;
+  busqueda: Observable<Hotel[]>;
+
+  nombreObservable: Observable<string>;
+  nombre: string;
 
   constructor(public db: AngularFirestore) {
     this.hotelCollection = db.collection('hotels');
@@ -26,10 +30,16 @@ export class HotelService {
       );
       }
     );
+
+    this.busqueda = this.hotels;
   }
 
   getHotels() {
     return this.hotels;
+  }
+
+  getBusqueda() {
+    return this.busqueda;
   }
 
   addHotel(hotel: Hotel) {
@@ -49,12 +59,20 @@ export class HotelService {
     this.hotelDocument.delete();
   }
 
-  findHotel(nombre: String) {
-    console.log('inicia find hotel ' + nombre);
-    const url = 'hotels/' + nombre;
-    console.log(url);
-    this.hotelDocument = this.db.doc(url);
+  filterHotel(nombre: string) {
+    console.log('inicia filter ' + nombre);
+    this.nombre = nombre;
+    this.nombreObservable.subscribe( (value) => nombre = value);
 
+    //console.log(this.nombre);
+    //this.busqueda = null;
+    //this.busqueda = this.hotels.map( hoteles => {
+    //  return (hoteles.filter( hotel => hotel.nombre === this.nombre ));
+    //});
+    //this.busqueda.forEach(element => element.forEach(element2 => {
+    //  console.log(element2.nombre);
+    //}) );
+    console.log('end filter');
   }
 
 }

@@ -1,53 +1,56 @@
-import { Component, ViewEncapsulation } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Input } from '@angular/core';
+import { Hotel } from '../../model/hotel';
+import { HotelService } from '../../services/hotel.service';
+import {Observable} from 'rxjs/Observable';
+import { equal } from 'assert';
+import { Subscribe } from '@firebase/util';
 
 @Component({
   selector: 'app-busqueda',
   templateUrl: './busqueda.component.html',
-  styleUrls: ['./busqueda.component.css'],
-  encapsulation: ViewEncapsulation.None,
-  styles: [`
-    .dark-modal .modal-content {
-      background-color: #292b2c;
-      color: white;
-    }
-    .dark-modal .close {
-      color: white;
-    }
-    .light-blue-backdrop {
-      background-color: #5cb3fd;
-    }
-  `]
+  styleUrls: ['./busqueda.component.css']
 })
-export class BusquedaComponent  {
-  title: string = 'My first AGM project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+export class BusquedaComponent implements OnInit {
+hoteles: Hotel[];
+busqueda: Hotel[];
+nombre: string;
+
+
+constructor(public hotelService: HotelService) {
+  this.busqueda = [{
+    id: '',
+    nombre: '',
+    costoHabitacion: 0,
+    latitud: 0,
+    longitud: 0
+  }];
+  this.hoteles = [{
+    id: '',
+    nombre: '',
+    costoHabitacion: 0,
+    latitud: 0,
+    longitud: 0
+  }];
+  this.nombre = '';
+
 }
 
-export class NgbdModalOptions {
-  closeResult: string;
-
-  constructor(private modalService: NgbModal) {}
-
-  openBackDropCustomClass(contenido) {
-    this.modalService.open(contenido, {backdropClass: 'light-blue-backdrop'});
+  ngOnInit() {
+    this.hotelService.getHotels().subscribe(valores => this.hoteles = valores);
+    this.hotelService.getHotels().subscribe(valores => this.busqueda = valores);
+    this.nombre = '';
   }
 
-  openWindowCustomClass(contenido) {
-    this.modalService.open(contenido, { windowClass: 'dark-modal' });
-  }
-
-  openSm(contenido) {
-    this.modalService.open(contenido, { size: 'sm' });
-  }
-
-  openLg(contenido) {
-    this.modalService.open(contenido, { size: 'lg' });
-  }
-
-  openVerticallyCentered(contenido) {
-    this.modalService.open(contenido, { centered: true });
+  buscar() {
+    console.log('inicia buscar');
+    if ( this.nombre === '' ) {
+      this.nombre = ' ';
+    }
+    this.busqueda = this.busqueda.filter(hotel => hotel.nombre === this.nombre);
+    if ( (this.busqueda.length) === 0 ) {
+      this.busqueda = this.hoteles;
+    }
+    const m: number = this.busqueda.length;
   }
 
 }

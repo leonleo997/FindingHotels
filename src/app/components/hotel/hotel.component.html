@@ -3,20 +3,6 @@
     <div class="row">
       <div class="col-lg-12">
         <div id="content">
-          <nav class="transparent" id="buscador">
-            <div class="nav-wrapper">
-              <form>
-                <div class="input-field" id="inputBuscador">
-                  <input id="search" type="search" required="true" placeholder="Encuentra tu hotel aquí" name="nombre" (ngModelChange)="findHotel()"
-                    [(ngModel)]="nombre">
-                  <label class="label-icon" for="search">
-                    <i class="material-icons" id="iconoBuscar">search </i>
-                  </label>
-                  <i class="material-icons" onclick="search.value=''">close</i>
-                </div>
-              </form>
-            </div>
-          </nav>
           <br/>
           <br/>
           <br/>
@@ -37,59 +23,10 @@
   </div>
 </div>
 
-<div class="container-fluid" *ngIf="nombre?.length; then Busqueda else noBusqueda">
-</div>
-<ng-template #Busqueda>
-  <div class="container" id="contentCards" *ngIf="true ; else noExiste">
-    <h1>Resultado de la busqueda</h1>
-    <div class="row">
-      <div class="col-lg-4">
-        <app-busqueda></app-busqueda>
-      </div>
-      <div class="col-lg-4">
-        <app-busqueda></app-busqueda>
-      </div>
-      <div class="col-lg-4">
-        <app-busqueda></app-busqueda>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-4">
-        <app-busqueda></app-busqueda>
-      </div>
-      <div class="col-lg-4">
-        <app-busqueda></app-busqueda>
-      </div>
-      <div class="col-lg-4">
-        <app-busqueda></app-busqueda>
-      </div>
-    </div>
-  </div>
-</ng-template>
-<ng-template #noExiste>
-  <div class="container-fluid">
-    <div class="jumbotron">
-      <h1>No hay hoteles con el nombre {{nombre}}</h1>
-    </div>
-  </div>
-</ng-template>
-<ng-template #noBusqueda>
-  <div class="container-fluid">
-    <div class="jumbotron">
-      <h1>Debe ingresar texto en la busqueda</h1>
-    </div>
-  </div>
-</ng-template>
-
-<div class="parallax" id="imagenDos">
-  <div class="container-fluid">
-  </div>
+<div class="container-fluid">
+  <app-busqueda></app-busqueda>
 </div>
 
-<div class="container-fluid" id="contentFinal">
-
-
-</div>
 
 
 <footer class="page-footer indigo darken-4">
