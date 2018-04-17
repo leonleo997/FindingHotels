@@ -1,13 +1,37 @@
-<div class="card">
-    <div class="card-image">
-      <img src="https://jadendreamer.files.wordpress.com/2014/04/maps.png?w=640">
-      <span class="card-title">Card Title</span>
-      <a class="btn-floating halfway-fab waves-effect waves-light red">
-        <i class="material-icons">add</i>
-      </a>
+<div class="container">
+  <nav class="transparent" id="buscador">
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field" id="inputBuscador">
+          <input id="search" type="search" required="true" placeholder="Encuentra tu hotel aquí"
+          name="nombre" [(ngModel)]="nombre" (ngModelChange)="buscar()">
+          <label class="label-icon" for="search">
+            <i class="material-icons" id="iconoBuscar">search </i>
+          </label>
+          <i class="material-icons" onClick="search.value=''" update="search" >close</i>
+        </div>
+      </form>
     </div>
-    <div class="card-content">
-      <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little
-        markup to use effectively.</p>
-    </div>
+  </nav>
+</div>
+
+<div class="container-fluid" >
+    <div class="container" id="contentCards">
+        <h1>Resultado de la busqueda</h1>
+        <div class="row">
+            <div class="card-content" *ngFor="let hotel of busqueda">
+                <strong>---------------</strong>
+                <strong>{{hotel.nombre}}</strong>
+                <strong>{{hotel.costoHabitacion}}</strong>
+                <strong>{{hotel.latitud}}</strong>
+                <strong>{{hotel.longitud}}</strong>
+              </div>
+        </div>
+      </div>
+</div>
+
+
+<div class="parallax" id="imagenDos">
+  <div class="container-fluid">
   </div>
+</div>
