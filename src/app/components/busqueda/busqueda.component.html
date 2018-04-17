@@ -1,37 +1,90 @@
 <div class="container">
-  <nav class="transparent" id="buscador">
+  <nav class="indigo darken-3" id="buscador">
     <div class="nav-wrapper">
       <form>
         <div class="input-field" id="inputBuscador">
-          <input id="search" type="search" required="true" placeholder="Encuentra tu hotel aquí"
-          name="nombre" [(ngModel)]="nombre" (ngModelChange)="buscar()">
+          <input id="search" type="search" required="true" placeholder="Encuentra tu hotel aquí" name="nombre" [(ngModel)]="nombre"
+            (ngModelChange)="buscar()">
           <label class="label-icon" for="search">
             <i class="material-icons" id="iconoBuscar">search </i>
           </label>
-          <i class="material-icons" onClick="search.value=''" update="search" >close</i>
+          <i class="material-icons" onClick="search.value=''" update="search">close</i>
         </div>
       </form>
     </div>
   </nav>
 </div>
-
-<div class="container-fluid" >
-    <div class="container" id="contentCards">
-        <h1>Resultado de la busqueda</h1>
-        <div class="row">
-            <div class="card-content" *ngFor="let hotel of busqueda">
-                <strong>---------------</strong>
-                <strong>{{hotel.nombre}}</strong>
-                <strong>{{hotel.costoHabitacion}}</strong>
-                <strong>{{hotel.latitud}}</strong>
-                <strong>{{hotel.longitud}}</strong>
+<br/>
+<div class="container-fluid">
+  <h1>Resultado de la busqueda</h1>
+  <div class="row">
+    <div class="col l12">
+      <div id="bushotel" class="card-panel brown lighten-5" *ngFor="let hotel of busqueda">
+        <h1>{{hotel.nombre}}</h1>
+        <h2>Costo por habitación: ${{hotel.costoHabitacion}}</h2>
+        <h3>Calificación: {{hotel.costoHabitacion}}</h3>
+        <p>
+          <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+            aria-controls="hotel.nombre">
+            más
+          </button>
+        </p>
+        <div id="hotel.nombre" [ngbCollapse]="isCollapsed">
+          <div class="card">
+            <div class="card-body">
+              <div class="col s5 container-fluid">
+                <h3>Ubicación</h3>
+                <agm-map [latitude]="hotel.latitud" [longitude]="hotel.longitud" [zoom]="zoom">
+                  <agm-marker [latitude]="hotel.latitud" [longitude]="hotel.longitud"></agm-marker>
+                </agm-map>
               </div>
+              <div class="col s7">
+                <h3>Comentarios</h3>
+                <div id="cardComentarios" class="card-panel">
+                  <ngb-tabset>
+                    <ngb-tab title="Comentarios">
+                      <ng-template ngbTabContent>
+                        <ul class="collection">
+                          <app-comentarios></app-comentarios>
+                          <app-comentarios></app-comentarios>
+                          <app-comentarios></app-comentarios>
+                          <app-comentarios></app-comentarios>
+                        </ul>
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab>
+                      <ng-template ngbTabTitle>
+                        <b>Mi</b> Comentario</ng-template>
+                      <ng-template ngbTabContent>
+                        <div class="container">
+                          <div class="col s12 input-field">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="usuario" type="text" class="validate">
+                            <label for="usuario">Usuario</label>
+                          </div>
+                          <div class="col s12 input-field">
+                            <i class="material-icons prefix">comment</i>
+                            <textarea id="textarea" class="materialize-textarea"></textarea>
+                            <label for="textarea">Comentario</label>
+                          </div>
+                          <div class="col s12 input-field">
+                            <p>Calificación</p>
+                            <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"></ngb-rating>
+                            <br/> <br/> 
+                            <button type="button" class="btn btn-outline-primary">Comentar</button>
+                            <button type="button" class="btn btn-outline-danger">Cancelar</button>
+                          </div>
+                        </div>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </div>
+                <br/>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-</div>
-
-
-<div class="parallax" id="imagenDos">
-  <div class="container-fluid">
+    </div>
   </div>
 </div>

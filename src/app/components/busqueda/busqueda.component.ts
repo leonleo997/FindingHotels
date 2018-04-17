@@ -8,12 +8,17 @@ import { Subscribe } from '@firebase/util';
 @Component({
   selector: 'app-busqueda',
   templateUrl: './busqueda.component.html',
-  styleUrls: ['./busqueda.component.css']
+  styleUrls: ['./busqueda.component.css'],
 })
 export class BusquedaComponent implements OnInit {
 hoteles: Hotel[];
 busqueda: Hotel[];
 nombre: string;
+
+title: string = 'My first AGM project';
+lat: number = 51.678418;
+lng: number = 7.809007;
+zoom: number = 16;
 
 
 constructor(public hotelService: HotelService) {
@@ -55,3 +60,8 @@ constructor(public hotelService: HotelService) {
 
 }
 
+export class NgbdRatingEvents {
+  selected = 0;
+  hovered = 0;
+  readonly = false;
+}

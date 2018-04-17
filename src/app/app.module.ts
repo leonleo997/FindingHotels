@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { RouterConfig } from './components/router.config';
 import { SobreNosotrosComponent } from './components/sobre-nosotros/sobre-nosotros.component';
 import { AgmCoreModule } from '@agm/core';
+import { ComentariosComponent } from './components/comentarios/comentarios.component';
 
 
 
@@ -30,6 +31,7 @@ import { AgmCoreModule } from '@agm/core';
     BusquedaComponent,
     NuevoHotelComponent,
     SobreNosotrosComponent,
+    ComentariosComponent,
   ],
   imports: [
     BrowserModule,
