@@ -40,7 +40,7 @@ export class NuevoHotelComponent implements OnInit {
   addHotel() {
     if (this.hotel.nombre !== null && this.hotel.costoHabitacion !== null &&
     this.hotel.latitud !== null && this.hotel.longitud !== null) {
-      this.hotelService.addHotel(this.hotel);
+      this.hotelService.addHotel(this.hotel, this.hotels);
       this.hotel = {
         id : null,
         nombre: null,
@@ -59,5 +59,9 @@ export class NuevoHotelComponent implements OnInit {
     this.lng = event.coords.lng;
     this.hotel.latitud = this.lat;
     this.hotel.longitud = this.lng;
+  }
+
+  nada() {
+    this.hotelService.nada();
   }
 }

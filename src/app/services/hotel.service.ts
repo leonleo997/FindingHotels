@@ -4,6 +4,9 @@ AngularFirestoreDocument} from 'angularfire2/firestore';
 import {Observable} from 'rxjs/Observable';
 import {Hotel} from '../model/hotel';
 import { createUploadTask } from 'angularfire2/storage';
+import {Comentario} from '../model/comentario';
+import { validateArgCount } from '@firebase/util';
+
 
 @Injectable()
 export class HotelService {
@@ -11,6 +14,12 @@ export class HotelService {
   hotelDocument: AngularFirestoreDocument<Hotel>;
   hotels: Observable<Hotel[]>;
   busqueda: Observable<Hotel[]>;
+
+  comentariosCollection: AngularFirestoreCollection<Hotel>;
+  comentarios: Observable<Comentario[]>;
+
+  comentar: Comentario[];
+
 
   nombreObservable: Observable<string>;
   nombre: string;
@@ -42,13 +51,32 @@ export class HotelService {
     return this.busqueda;
   }
 
-  addHotel(hotel: Hotel) {
-    console.log('entra add');
-    console.log(hotel.nombre);
-    console.log(hotel.costoHabitacion);
-    console.log(hotel.longitud);
-    console.log(hotel.latitud);
+  addHotel(hotel: Hotel, hotelitos: Hotel[]) {
     this.hotelCollection.add(hotel);
+    let algo: Hotel[];
+    this.hotels.subscribe( valores => algo = valores);
+    console.log(algo);
+
+  console.log(hotel.nombre);
+
+    //const url = 'hotels/' + varHotel.id + '/comentarios';
+    /*
+    const come: Comentario = {
+      id: null,
+      usuario: 'yesid',
+      email: null,
+      comentario: null,
+      calificacion: 0
+    };
+    console.log(url);
+    this.db.doc(url).collection('comentarios').add(come);
+    */
+  }
+
+  nada() {
+    let algo: Hotel[];
+    this.hotels.subscribe( valores => algo = valores);
+    console.log(algo);
   }
 
   delHotel(hotel: Hotel) {
@@ -57,6 +85,40 @@ export class HotelService {
     console.log(url);
     this.hotelDocument = this.db.doc(url);
     this.hotelDocument.delete();
+  }
+
+
+
+  getComments(hotel: string) {
+    const url = 'hotels/' + hotel ;
+    console.log(hotel);
+    console.log(url);
+    this.comentarios = this.db.doc(url).collection('comentarios').snapshotChanges().map(
+      comentarios => {
+        return comentarios.map( comentariesito => ({
+          id: comentariesito.payload.doc.id,
+        email: comentariesito.payload.doc.get('email'),
+        usuario: comentariesito.payload.doc.get('usuario'),
+        calificacion: comentariesito.payload.doc.get('calificacion'),
+        comentario: comentariesito.payload.doc.get('comentario')
+        })
+      );
+      }
+    );
+    console.log('comentariooooooooooos ');
+    this.comentarios.subscribe(valores => this.comentar = valores);
+    if (this.comentar != null ) {
+    this.comentar.forEach(value => console.log(value.comentario));
+    }
+    console.log(this.comentar);
+    return this.comentarios;
+  }
+
+  addComment(comentario: Comentario, hotel: Hotel) {
+    const url = 'hotels/' + hotel.id;
+    this.db.doc(url).collection('comentarios').add(comentario);
+    console.log(hotel.nombre);
+    console.log(url);
   }
 
   filterHotel(nombre: string) {

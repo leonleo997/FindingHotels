@@ -1,7 +1,12 @@
-<li class="collection-item avatar">
-  <i class="material-icons circle">person</i>
-  <span class="title">Usuario</span>
-  <p>Comentario
-    <br> Calificación
-  </p>
+<li class="collection-item avatar" *ngFor="let comentario of comentarios">
+    <i class="material-icons circle">person</i>
+    <span class="title">{{comentario.usuario}}</span>
+    <br>
+    <p>{{comentario.email}}</p>
+    <p>{{comentario.comentario}}</p>
+
+    <p>
+      <br>
+      <ngb-rating [(rate)]="comentario.calificacion " [readonly]="true"></ngb-rating>
+    </p>
 </li>

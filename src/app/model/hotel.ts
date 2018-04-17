@@ -1,4 +1,5 @@
-import { GeoPoint } from '@firebase/firestore-types';
+import {Comentario} from './comentario';
+
 
 export class Hotel {
     id: string;

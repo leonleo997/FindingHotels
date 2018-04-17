@@ -1,0 +1,25 @@
+<form (ngSubmit) = "addComment()">
+    <div class="col s12 input-field">
+        <i class="material-icons prefix">email</i>
+        <input id="correo" type="text" class="validate" name="correo" [(ngModel)]="comentario.email">
+        <label for="correo" >correo</label>
+      </div>
+      <div class="col s12 input-field">
+        <i class="material-icons prefix">account_circle</i>
+        <input id="usuario" type="text" class="validate" name="usuario" [(ngModel)]="comentario.usuario">
+        <label for="usuario">Usuario</label>
+      </div>
+      <div class="col s12 input-field">
+        <i class="material-icons prefix">comment</i>
+        <textarea id="textarea" class="materialize-textarea" name="descripcion" [(ngModel)]="comentario.comentario"></textarea>
+        <label for="textarea">Comentario</label>
+      </div>
+      <div class="col s12 input-field">
+        <p>Calificación</p>
+        <ngb-rating [(rate)]="comentario.calificacion" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="false"></ngb-rating>
+        <br/>
+        <br/>
+        <button type="button" class="btn btn-outline-primary" type="submit">Comentar</button>
+        <button type="button" class="btn btn-outline-danger">Cancelar</button>
+      </div>
+</form>

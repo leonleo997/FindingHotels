@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Hotel } from '../../model/hotel';
 import { HotelService } from '../../services/hotel.service';
+import { Comentario } from '../../model/comentario';
 import {Observable} from 'rxjs/Observable';
 import { equal } from 'assert';
 import { Subscribe } from '@firebase/util';
@@ -15,34 +16,24 @@ hoteles: Hotel[];
 busqueda: Hotel[];
 nombre: string;
 
+
 lat: number = 51.678418;
 lng: number = 7.809007;
-zoom: number = 16;
+zoom: number = 13;
+
 
 
 constructor(public hotelService: HotelService) {
-  this.busqueda = [{
-    id: '',
-    nombre: '',
-    costoHabitacion: 0,
-    latitud: 0,
-    longitud: 0
-  }];
-  this.hoteles = [{
-    id: '',
-    nombre: '',
-    costoHabitacion: 0,
-    latitud: 0,
-    longitud: 0
-  }];
+  this.hotelService.getHotels().subscribe(valores => this.hoteles = valores);
+    this.hotelService.getHotels().subscribe(valores => this.busqueda = valores);
+    this.nombre = '';
   this.nombre = '';
 
 }
 
   ngOnInit() {
-    this.hotelService.getHotels().subscribe(valores => this.hoteles = valores);
-    this.hotelService.getHotels().subscribe(valores => this.busqueda = valores);
-    this.nombre = '';
+
+    //this.isCollapsed = false;
   }
 
   buscar() {
@@ -58,6 +49,21 @@ constructor(public hotelService: HotelService) {
       this.busqueda = this.hoteles;
     }
     const m: number = this.busqueda.length;
+  }
+
+  calcularCalificacion(idTema: string) {
+    let comentarios: Comentario[];
+    this.hotelService.getComments(idTema).subscribe(valores => comentarios = valores);
+
+    let contador = 0;
+    let acumulado = 0;
+    comentarios.forEach( valor => {
+      acumulado = acumulado + valor.calificacion;
+      contador ++;
+    });
+
+    const promedio = acumulado / contador;
+    return promedio;
   }
 
 }
