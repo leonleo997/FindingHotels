@@ -12,16 +12,6 @@ export class HotelComponent implements OnInit {
   nombre: string;
   constructor(public hotelService: HotelService) {
     this.nombre = '';
-    /*this.hotels = [
-      {
-        'id': '12e',
-        'nombre': 'Torre cali',
-        'costoHabitacion': 150000,
-        'latitud': 23323223,
-        'longitud': -2334234
-      }
-    ];
-    */
   }
 
   ngOnInit() {
