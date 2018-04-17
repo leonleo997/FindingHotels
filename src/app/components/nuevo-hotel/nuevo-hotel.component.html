@@ -15,33 +15,52 @@
 <br/>
 
 <div class="container" id="formulario">
-  <h2>Deja que nootros te ayudemos a crecer en tu negocio de hoteleria.</h2>
+  <h2>Deja que nosotros te ayudemos a crecer en tu negocio de hoteleria.</h2>
   <h3>Agrega tus hoteles con nosotros y emprezarás a ser parte de la familia JourneyBooking.com</h3>
 
   <br/>
   <br/>
   <form (ngSubmit)="addHotel()">
-    <div class="container">
+    <div class="container ">
       <div class="row">
-        <div class="col m6">
-          <input type="text" name="nombre" placeholder="Nombre del hotel" [(ngModel)]="hotel.nombre">
+        <div class="col-lg-5 border">
+          <div class="container">
+              <div class="row">
+                  <input type="text" name="nombre" placeholder="Nombre del hotel" [(ngModel)]="hotel.nombre" required>
+                </div>
+                <div class="row">
+                  <input type="number" name="costoHabitacion" placeholder="Costo por habitación" [(ngModel)]="hotel.costoHabitacion" required>
+                </div>
+                <div class="row">
+                  <input type="number" placeholder="Latitud" name="latitud" [(ngModel)]="hotel.latitud" required>
+                </div>
+                <div class="row">
+                  <input type="number" placeholder="Longitud" name="longitud" [(ngModel)]='hotel.longitud' required>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button class="btn waves-effect waves-light" type="submit" name="action" value="Agregar">
+                            <i class="material-icons right">send</i>Agregar
+                          </button>
+                    </div>
+                    <div class="col-lg-6">
+                        <button class="btn waves-effect red darken-4" type="button" name="action" value="Cancelar">Cancelar
+                          </button>
+                    </div>
+
+                </div>
+          </div>
         </div>
-        <div class="col m6">
-          <input type="number" name="costoHabitacion" placeholder="Costo por habitación" [(ngModel)]="hotel.costoHabitacion">
-        </div>
-        <div class="col m6">
-          <input type="number" placeholder="Latitud" name="latitud" [(ngModel)]="hotel.latitud">
-        </div>
-        <div class="col m6">
-          <input type="number" placeholder="Longitud" name="longitud" [(ngModel)]='hotel.longitud'>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-6">
+          <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (mapClick)="click($event)">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
         </div>
       </div>
+
     </div>
-    <button class="btn waves-effect waves-light" type="submit" name="action" value="Agregar">
-      <i class="material-icons right">send</i>Agregar
-    </button>
-    <button class="btn waves-effect red darken-4" type="button" name="action" value="Cancelar">Cancelar
-    </button>
+
   </form>
 </div>
 <br/>
