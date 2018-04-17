@@ -15,7 +15,6 @@ hoteles: Hotel[];
 busqueda: Hotel[];
 nombre: string;
 
-title: string = 'My first AGM project';
 lat: number = 51.678418;
 lng: number = 7.809007;
 zoom: number = 16;
@@ -51,7 +50,10 @@ constructor(public hotelService: HotelService) {
     if ( this.nombre === '' ) {
       this.nombre = ' ';
     }
-    this.busqueda = this.busqueda.filter(hotel => hotel.nombre === this.nombre);
+
+    if (this.nombre !== null && this.busqueda !== null) {
+      this.busqueda = this.busqueda.filter(hotel => hotel.nombre.toLowerCase().startsWith(this.nombre.toLocaleLowerCase()));
+    }
     if ( (this.busqueda.length) === 0 ) {
       this.busqueda = this.hoteles;
     }

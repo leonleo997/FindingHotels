@@ -35,7 +35,6 @@ export class NuevoHotelComponent implements OnInit {
     this.lat = 3.4460088;
     this.lng = -76.50336999999999;
     this.zoom = 13;
-    this.respuesta = '';
   }
 
   addHotel() {
