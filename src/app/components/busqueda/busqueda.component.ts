@@ -51,20 +51,6 @@ constructor(public hotelService: HotelService) {
     const m: number = this.busqueda.length;
   }
 
-  calcularCalificacion(idTema: string) {
-    let comentarios: Comentario[];
-    this.hotelService.getComments(idTema).subscribe(valores => comentarios = valores);
-
-    let contador = 0;
-    let acumulado = 0;
-    comentarios.forEach( valor => {
-      acumulado = acumulado + valor.calificacion;
-      contador ++;
-    });
-
-    const promedio = acumulado / contador;
-    return promedio;
-  }
 
 }
 
