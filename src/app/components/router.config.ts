@@ -3,6 +3,7 @@ import { HotelComponent } from "./hotel/hotel.component";
 import { NuevoHotelComponent } from "./nuevo-hotel/nuevo-hotel.component";
 import { SobreNosotrosComponent } from "./sobre-nosotros/sobre-nosotros.component";
 
+
 export const RouterConfig: Route [] = [
     {path: 'hotel', component: HotelComponent},
     {path: 'nuevo-hotel', component: NuevoHotelComponent},

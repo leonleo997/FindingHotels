@@ -7,3 +7,7 @@
     text-align: center;
     font-size: 3em;
 }
+
+agm-map {
+    height: 300px;
+  }

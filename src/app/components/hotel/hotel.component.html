@@ -12,7 +12,7 @@
                   <label class="label-icon" for="search">
                     <i class="material-icons" id="iconoBuscar">search </i>
                   </label>
-                  <i class="material-icons">close</i>
+                  <i class="material-icons" onclick="search.value=''">close</i>
                 </div>
               </form>
             </div>
@@ -68,12 +68,16 @@
 </ng-template>
 <ng-template #noExiste>
   <div class="container-fluid">
-    <h1>No hay hoteles con el nombre {{nombre}}</h1>
+    <div class="jumbotron">
+      <h1>No hay hoteles con el nombre {{nombre}}</h1>
+    </div>
   </div>
 </ng-template>
 <ng-template #noBusqueda>
   <div class="container-fluid">
-    <h1>Debe ingresar texto en la busqueda</h1>
+    <div class="jumbotron">
+      <h1>Debe ingresar texto en la busqueda</h1>
+    </div>
   </div>
 </ng-template>
 
