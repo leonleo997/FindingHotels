@@ -16,7 +16,7 @@
       </div>
       <div class="col s12 input-field">
         <p>Calificación</p>
-        <ngb-rating [(rate)]="comentario.calificacion" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="false"></ngb-rating>
+        <ngb-rating [(rate)]="comentario.calificacion" [readonly]="false"></ngb-rating>
         <br/>
         <br/>
         <button type="button" class="btn btn-outline-primary" type="submit">Comentar</button>
